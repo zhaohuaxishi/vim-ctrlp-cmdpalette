@@ -55,7 +55,7 @@ import json
 path_to_script = vim.eval('expand("<sfile>")')
 path_to_commands = path_to_script.replace('cmdpalette.vim', 'internal_commands.txt')
 with open(path_to_commands) as commands_file:
-    internal_commands = [l.strip() for l in commands_file.readlines()]
+    internal_commands = [l.split()[0] for l in commands_file.readlines()]
 
 # obtain the custom commands
 vim.command('redir => custom_commands')
@@ -63,7 +63,7 @@ vim.command('silent command')
 vim.command('redir END')
 
 # convert to list, remove empties, discard 4 first columns and take first word
-custom_commands = [x[4:].split()[0] + '\t(custom command)'
+custom_commands = [x[4:].split()[0]
                    for x in vim.eval('custom_commands').split('\n')
                    if x.strip()]
 # remove header
