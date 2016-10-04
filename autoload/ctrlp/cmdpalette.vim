@@ -52,26 +52,27 @@ import vim
 import json
 
 # obtain the internal commands (file distributed with the plugin)
-path_to_script = vim.eval('expand("<sfile>")')
-path_to_commands = path_to_script.replace('cmdpalette.vim', 'internal_commands.txt')
-with open(path_to_commands) as commands_file:
-    internal_commands = []
-    for l in commands_file:
-        cmd = l[l.find(':') + 1:].split()[0]
-        start = cmd.find('[')
-        if start == -1:
-            internal_commands.append(cmd)
-            continue
-
-        end = cmd.find(']')
-        if end == -1:
-            continue
-
-        abbr = cmd[:start]
-        compete = abbr + cmd[start + 1:end]
-
-        internal_commands.append(abbr)
-        internal_commands.append(compete)
+internal_commands = []
+# path_to_script = vim.eval('expand("<sfile>")')
+# path_to_commands = path_to_script.replace('cmdpalette.vim', 'internal_commands.txt')
+# with open(path_to_commands) as commands_file:
+#     internal_commands = []
+#     for l in commands_file:
+#         cmd = l[l.find(':') + 1:].split()[0]
+#         start = cmd.find('[')
+#         if start == -1:
+#             internal_commands.append(cmd)
+#             continue
+#
+#         end = cmd.find(']')
+#         if end == -1:
+#             continue
+#
+#         abbr = cmd[:start]
+#         compete = abbr + cmd[start + 1:end]
+#
+#         internal_commands.append(abbr)
+#         internal_commands.append(compete)
 
 # obtain the custom commands
 vim.command('redir => custom_commands')
