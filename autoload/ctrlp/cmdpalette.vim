@@ -24,7 +24,7 @@ let s:cmdpalette_var = {
 	\ 'accept': 'ctrlp#cmdpalette#accept',
 	\ 'lname': 'cmdpalette',
 	\ 'sname': 'cmdp',
-	\ 'type': 'tabs',
+	\ 'type': 'path',
 	\ 'sort': 1,
 	\ }
 
